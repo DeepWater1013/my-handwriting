@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script type="text/javascript" src="./handwriting.canvas.js"></script>
+</head>
+<body>
+<canvas id="can" width="400" height="400" style="border: 2px solid; cursor: crosshair;"></canvas>
+<button onclick="send()"> Send</button>
+<button onclick="erase()"> Erase</button>
+<script>
+    var can1 = new handwriting.Canvas(document.getElementById("can"));
+    can1.setOptions(
+        {
+            language: "en",
+            numOfReturn: 3
+        }
+    );
+    can1.setCallBack(function(data, err) {
+        if(err) throw err;
+        else console.log(data);
+    });
+    function  send() {
+    	can1.recognize()
+    	// body...
+    }
+    function erase(argument) {
+    	can1.erase();
+    	// body...
+    }
+</script>
+</body>
+</html>
